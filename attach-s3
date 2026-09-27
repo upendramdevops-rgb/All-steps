@@ -1,0 +1,15 @@
+Create a iam role and attach to server
+list the buckets (aws s3 ls)
+Create a s3 buckt (aws s3 mb s3://upendra.test)
+integrate bucket with kops ( export KOPS_STATE_STORE=s3://sreedhar143-mybucket)
+cheeck attch ornot (echo $KOPS_STATE_STORE)
+
+create a cluster
+
+kops create cluster --name=k8s.example.com --state=s3://sreedhar143-mybucket --zones=us-east-2a 
+--node-count=1 --node-size=m7i-flex.large --control-plane-size=m7i-flex.large
+
+update cluster
+
+kops update cluster --name=k8s.example.com --yes
+
