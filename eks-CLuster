@@ -1,17 +1,23 @@
 create cluster without nodes.
 
- eksctl create cluster --name=EKS-1 --region=us-east-2 --zones=us-east-2a,us-east-2b --without-nodegroup
+ eksctl create cluster --name=EKS-1 --region=ap-south-2 --zones=ap-south-2a ap-south-2b --without-nodegroup
+
+eksctl get cluster --region=ap-south-2
+
+aws eks list-clusters --region=ap-south-2
+
+eksctl delete cluster --name=EKS-2 --region=ap-south-2
 
 attach a iam
 
-eksctl utils associate-iam-oidc-provider --region us-east-2 --cluster EKS-1 --approve
+eksctl utils associate-iam-oidc-provider --region ap-south-2 --cluster EKS-1 --approve
 
 create a nodes
 
- eksctl create nodegroup --cluster=EKS-1 --region=us-east-2 --name=upendra --node-type=t3.medium --nodes=3 --nodes-min=2 
---nodes-max=4 --node-volume-size=20 --ssh-access --ssh-public-key=project --managed --asg-access --external-dns-access 
---full-ecr-access --appmesh-access --alb-ingress-access
+eksctl create nodegroup --cluster=EKS-1 --region=ap-south-2 --name=node2 --node-type=t3.medium --nodes=2 --nodes-min=2 
+--nodes-max=2 --node-volume-size=20 --ssh-access --ssh-public-key=key --managed --asg-access --external-dns-access 
+--full-ecr-access --appmesh-access --alb-ingress-access 
 
 update iam
 
-aws eks update-kubeconfig --name EKS-1 --region us-east-2
+aws eks update-kubeconfig --name EKS-1 --region ap-south-2
