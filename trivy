@@ -1,0 +1,3 @@
+sudo rpm -ivh https://github.com/aquasecurity/trivy/releases/latest/download/trivy-repo-3.0-1.noarch.
+sudo dnf install trivy -y
+trivy --version
