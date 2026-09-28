@@ -1,6 +1,6 @@
 create cluster without nodes.
 
- eksctl create cluster --name=EKS-1 --region=ap-south-2 --zones=ap-south-2a ap-south-2b --without-nodegroup
+eksctl create cluster --name=EKS-1 --region=ap-south-2 --zones=ap-south-2a ap-south-2b --without-nodegroup
 
 eksctl get cluster --region=ap-south-2
 
